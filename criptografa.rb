@@ -1,12 +1,18 @@
+# encoding: UTF-8
+
 require 'twofish'
+require 'base64'
 
 key = '1234567890123456'
-tf = Twofish.new(key, :padding => :zero_byte)
+tf = Twofish.new(key, :mode => :ecb, :padding => :zero_byte)
 texto_cripto = tf.encrypt('Maconha tem THC, Paulo fuma maconha, logo Paulo tem THC')
 
 
 puts "Texto criptografado"
-p texto_cripto
+
+base = Base64.encode64(texto_cripto)
+puts base
+
 
 puts ' '
 
